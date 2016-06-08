@@ -35,11 +35,11 @@ class OAuthUtil {
             foreach ($matches[1] as $i => $h) {
                 $params[$h] = OAuthUtil::urldecode_rfc3986(empty($matches[3][$i]) ? $matches[4][$i] : $matches[3][$i]);
             }
-        if (isset($params['realm'])) {
+            // Just unset it, if it doesn't exist, nothing will be done.
             unset($params['realm']);
         }
-    }
-    return $params;
+        
+        return $params;
     }
 
     // helper to try to sort out headers for people who aren't running apache
